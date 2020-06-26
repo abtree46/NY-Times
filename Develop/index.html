@@ -69,8 +69,24 @@
 
             <script>
               var apiKey = "N3qDmXzB7rnsARnprGiIdMkNXQ1HKUzh"
-              var searchTerm = "ducks"
-              var nyTimes = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=headline:"+searchTerm+ "&api-key="+apiKey
+              //var searchTerm = "ducks"
+              var nyTimes = "https://api.nytimes.com/svc/search/v2/articlesearch.json?fq=headline:"+searchTerm+ "&api-key="+apiKey;
+
+              // Declaring variables to hold results from user's input
+              var searchTerm = ""
+              var numRecords = 0;
+              var startYear = 0;
+              var endYear = 0;
+
+              // Click for each button 
+              $(".clearResults").on("click", function () {
+                $("#searchResults").empty();
+              })
+
+              $(".search").on("click", nyTimesSearch())
+
+              function nyTimesSearch()
+
               $.ajax({
                   url: nyTimes,
                   method: "GET"
@@ -84,6 +100,8 @@
                       console.log(article);
                   }
               })
+
+
             </script>
   </body>
 
